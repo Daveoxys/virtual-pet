@@ -1,0 +1,17 @@
+{
+  "name": "virtual-pet",
+  "version": "1.0.0",
+  "description": "\"\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "virtual-pet"
+  ],
+  "author": "Dave Taylor",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
