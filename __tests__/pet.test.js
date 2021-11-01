@@ -22,6 +22,7 @@ describe("constructor", () => {
   });
 
   it("Pet initial hunger equals 0", () => {
+    const pet = new Pet("Fenrir");
     expect(pet.hunger).toEqual(0);
   });
 });
