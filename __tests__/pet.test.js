@@ -103,4 +103,12 @@ describe("checkUp", () => {
     pet.fitness = 4;
     expect(pet.checkUp()).toEqual("I feel great!");
   });
+
+  describe("isAlive", () => {
+    it("returns false if the pet is dead based on the fitness level", () => {
+      const pet = new Pet("Fenrir");
+      pet.fitness = 0;
+      expect(pet.isAlive).toBe(False);
+    });
+  });
 });
