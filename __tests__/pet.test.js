@@ -44,6 +44,12 @@ describe("growUp", () => {
     pet.growUp();
     expect(pet.fitness).toEqual(7);
   });
+
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fenrir");
+    pet.age = 31;
+    expect(() => pet.growUp()).toThrow("404 Pets life not found");
+  });
 });
 
 describe("walk", () => {
@@ -60,6 +66,12 @@ describe("walk", () => {
     pet.walk();
     expect(pet.fitness).toEqual(10);
   });
+
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fenrir");
+    pet.fitness = 0;
+    expect(() => pet.growUp()).toThrow("404 Pets life not found");
+  });
 });
 
 describe("feed", () => {
@@ -74,6 +86,12 @@ describe("feed", () => {
     const pet = new Pet("Fenrir");
     pet.feed();
     expect(pet.hunger).toEqual(0);
+  });
+
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fenrir");
+    pet.hunger = 11;
+    expect(() => pet.feed()).toThrow("404 Pets life not found");
   });
 });
 
@@ -104,11 +122,36 @@ describe("checkUp", () => {
     expect(pet.checkUp()).toEqual("I feel great!");
   });
 
-  describe("isAlive", () => {
-    it("returns false if the pet is dead based on the fitness level", () => {
-      const pet = new Pet("Fenrir");
-      pet.fitness = 0;
-      expect(pet.isAlive).toBe(False);
-    });
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fenrir");
+    pet.hunger = 11;
+    expect(() => pet.feed()).toThrow("404 Pets life not found");
+  });
+});
+
+describe("isAlive", () => {
+  it("returns false if the pet is dead based on the fitness level", () => {
+    const pet = new Pet("Fenrir");
+    pet.fitness = 0;
+    expect(pet.isAlive).toBe(false);
+  });
+  it("returns false if the pet is dead based on the hunger level", () => {
+    const pet = new Pet("Fenrir");
+    pet.hunger = 11;
+    expect(pet.isAlive).toBe(false);
+  });
+
+  it("returns false if the pet is dead based on the age level", () => {
+    const pet = new Pet("Fenrir");
+    pet.age = 31;
+    expect(pet.isAlive).toBe(false);
+  });
+
+  it("returns true if pet the is alive based on the fintess, hunger and age level", () => {
+    const pet = new Pet("Fenrir");
+    pet.fitness = 10;
+    pet.hunger = 0;
+    pet.age = 29;
+    expect(pet.isAlive).toBe(true);
   });
 });
